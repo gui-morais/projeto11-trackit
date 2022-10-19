@@ -1,12 +1,5 @@
 import styled from "styled-components"
-
-export default function LayoutPage(props) {
-    return(
-        <Page>
-            {props.children}
-        </Page>
-    )
-}
+import { LightBlue } from "../consts/Colors"
 
 const Page = styled.div`
     width: 100%;
@@ -35,7 +28,7 @@ const Page = styled.div`
     }
     form button {
         height: 45px;
-        background-color: #52B6FF;
+        background-color: ${LightBlue};
         border-radius: 5px;
         font-size: 20px;
         color: white;
@@ -45,8 +38,10 @@ const Page = styled.div`
     p {
         font-size: 14px;
         text-decoration: underline;
-        color: #52B6FF;
+        color: ${LightBlue};
         margin: 25px auto;
         cursor: pointer;
     }
 `;
+
+export default Page;
