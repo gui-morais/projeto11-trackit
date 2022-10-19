@@ -3,7 +3,8 @@ import GlobalStyle from "./GlobalStyle"
 import InitialPage from "./initialpages/InitialPage"
 import SignUpPage from "./initialpages/SignUpPage";
 import Habits from "./internalpages/Habits";
-
+import Today from "./internalpages/Today";
+import Historic from "./internalpages/Historic";
 
 export default function App() {
     return(
@@ -12,7 +13,9 @@ export default function App() {
             <Routes>
                 {/* <Route path="/" element={<InitialPage />} /> */}
                 {/* <Route path="/" element={<SignUpPage />} /> */}
-                <Route path="/" element={<Habits />} />
+                {/* <Route path="/" element={<Habits />} /> */}
+                {/* <Route path="/" element={<Today />} /> */}
+                <Route path="/" element={<Historic />} />
             </Routes>
         </BrowserRouter>
     )
