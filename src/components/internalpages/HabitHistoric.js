@@ -2,34 +2,46 @@ import styled from "styled-components";
 import { Grey } from "../consts/Colors";
 
 
-export default function HabitHistoric(props) {
+export default function HabitHistoric({habit}) {
+    let current;
+    let highest;
+    if(habit.done) {
+        if(habit.currentSequence===1) {
+            current = <h2>Sequência atual: <span>{habit.currentSequence} dia</span></h2>;
+        } else{
+            current = <h2>Sequência atual: <span>{habit.currentSequence} dias</span></h2>;
+        }
+    } else {
+        if(habit.currentSequence===1) {
+            current = <h2>Sequência atual: {habit.currentSequence} dia</h2>;
+        } else{
+            current = <h2>Sequência atual: {habit.currentSequence} dias</h2>;
+        }
+    }
+
+    if(habit.done && habit.currentSequence===habit.highestSequence) {
+        if(habit.highestSequence===1) {
+            highest = <h2>Seu recorde: <span>{habit.highestSequence} dia</span></h2>;
+        } else{
+            highest = <h2>Seu recorde: <span>{habit.highestSequence} dias</span></h2>;
+        }
+    } else {
+        if(habit.highestSequence===1) {
+            highest = <h2>Seu recorde: {habit.highestSequence} dia</h2>;
+        } else{
+            highest = <h2>Seu recorde: {habit.highestSequence} dias</h2>;
+        }
+    }
+
     return(
-        <Section>
             <TextPart>
-                <h1>{props.children}</h1>
-                <h2>Sequência atual: 4 dias</h2>
-                <h2>Seu recorde: 5 dias</h2>
+                <h1>{habit.name}</h1>
+                {current}
+                {highest}
             </TextPart>
-            <ion-icon name="checkbox"></ion-icon>
-        </Section>
     );
 }
 
-const Section = styled.div`
-    width: 100%;
-    background-color: white;
-    border-radius: 5px;
-    padding: 15px;
-    box-sizing: border-box;
-    margin: 5px 0px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    ion-icon {
-        color: green;
-        font-size: 65px;
-    }
-`;
 const TextPart = styled.div`
     h1 {
         font-size: 20px;
@@ -40,5 +52,8 @@ const TextPart = styled.div`
         font-size: 13px;
         color: ${Grey};
         margin: 3px 0px;
+    }
+    span {
+        color: green;
     }
 `;

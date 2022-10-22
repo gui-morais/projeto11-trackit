@@ -35,6 +35,9 @@ const Page = styled.div`
         border: none;
         cursor: pointer;
     }
+    form button:disabled {
+        opacity: 0.5;
+    }
     p {
         font-size: 14px;
         text-decoration: underline;
