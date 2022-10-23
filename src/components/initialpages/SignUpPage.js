@@ -7,7 +7,12 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
-    const [newUser,setNewUser] = useState({email:"", name:"", image:"", password:""});
+  const [newUser, setNewUser] = useState({
+    email: "",
+    name: "",
+    image: "",
+    password: "",
+  });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -35,36 +40,48 @@ export default function SignUpPage() {
           placeholder="email"
           name="email"
           value={newUser.email}
-          onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
           required
           disabled
+          data-identifier="input-email"
         />
         <input
           type="password"
           placeholder="senha"
           name="password"
           value={newUser.password}
-          onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
           required
           disabled
+          data-identifier="input-password"
         />
         <input
           type="text"
           placeholder="nome"
           name="name"
           value={newUser.name}
-          onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
           required
           disabled
+          data-identifier="input-name"
         />
         <input
           type="url"
           placeholder="foto"
           name="image"
           value={newUser.image}
-          onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
           required
           disabled
+          data-identifier="input-photo"
         />
         <button type="submit" disabled>
           <ThreeDots
@@ -82,49 +99,63 @@ export default function SignUpPage() {
     );
   } else {
     forms = (
-        <form onSubmit={(e) => signUp(e)}>
-          <input
-            type="email"
-            placeholder="email"
-            name="email"
-            value={newUser.email}
-            onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
-            required
-          />
-          <input
-            type="password"
-            placeholder="senha"
-            name="password"
-            value={newUser.password}
-            onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
-            required
-          />
-          <input
-            type="text"
-            placeholder="nome"
-            name="name"
-            value={newUser.name}
-            onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
-            required
-          />
-          <input
-            type="url"
-            placeholder="foto"
-            name="image"
-            value={newUser.image}
-            onChange={(e) => setNewUser({...newUser,[e.target.name]:e.target.value})}
-            required
-          />
-          <button type="submit">Cadastrar</button>
-        </form>
+      <form onSubmit={(e) => signUp(e)}>
+        <input
+          type="email"
+          placeholder="email"
+          name="email"
+          value={newUser.email}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
+          required
+          data-identifier="input-email"
+        />
+        <input
+          type="password"
+          placeholder="senha"
+          name="password"
+          value={newUser.password}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
+          required
+          data-identifier="input-password"
+        />
+        <input
+          type="text"
+          placeholder="nome"
+          name="name"
+          value={newUser.name}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
+          required
+          data-identifier="input-name"
+        />
+        <input
+          type="url"
+          placeholder="foto"
+          name="image"
+          value={newUser.image}
+          onChange={(e) =>
+            setNewUser({ ...newUser, [e.target.name]: e.target.value })
+          }
+          required
+          data-identifier="input-photo"
+        />
+        <button type="submit">Cadastrar</button>
+      </form>
     );
   }
 
-    return(
-        <Page>
-            <img src={logo} alt="logo.png" />
-            {forms}
-            <Link to="/"><p>Já tem uma conta? Faça login!</p></Link>
-        </Page>
-    )
+  return (
+    <Page>
+      <img src={logo} alt="logo.png" />
+      {forms}
+      <Link to="/" data-identifier="back-to-login-action">
+        <p>Já tem uma conta? Faça login!</p>
+      </Link>
+    </Page>
+  );
 }
